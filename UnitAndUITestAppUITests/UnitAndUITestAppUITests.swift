@@ -53,12 +53,13 @@ class UnitAndUITestAppUITests: XCTestCase {
 
         // Act
         loginButton.tap()
+        XCTAssertTrue(loginButtonErrorAlert.waitForExistence(timeout: 1), "Error Dialog Not Presented")
+        
+        XCTAssertEqual(loginButtonErrorAlert.buttons.firstMatch.label, "OK")
+        
         loginButtonErrorAlert.buttons.firstMatch.tap()
-        print("Erroun Button Labeli : " + loginButtonErrorAlert.buttons.firstMatch.label)
 
         // Assert
-        XCTAssertTrue(loginButtonErrorAlert.waitForExistence(timeout: 1), "Error Dialog Not Presented")
-        XCTAssertEqual(loginButtonErrorAlert.buttons.firstMatch.label, "OK")
     }
 
     func testLoginViewController_WhenInvalidEmail_PresentsSuccessAlertDialog() throws {
