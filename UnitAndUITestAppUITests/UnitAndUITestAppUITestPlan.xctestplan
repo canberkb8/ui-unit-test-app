@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "137EA918-BF5F-449E-AE92-E9B2500704F7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:UnitAndUITestApp.xcodeproj",
+      "identifier" : "4DA25DEC2868D75F0073A6E6",
+      "name" : "UnitAndUITestApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:UnitAndUITestApp.xcodeproj",
+        "identifier" : "4DA25E0C2868D7610073A6E6",
+        "name" : "UnitAndUITestAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
