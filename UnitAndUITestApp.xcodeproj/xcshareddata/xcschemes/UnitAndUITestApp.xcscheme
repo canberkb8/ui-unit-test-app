@@ -61,6 +61,26 @@
                ReferencedContainer = "container:UnitAndUITestApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4D6AE4DF2872ED4800528C43"
+               BuildableName = "UnitAndUITestAppTestsNewBundle.xctest"
+               BlueprintName = "UnitAndUITestAppTestsNewBundle"
+               ReferencedContainer = "container:UnitAndUITestApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4D6AE4EC2872EF0600528C43"
+               BuildableName = "UnitAndUITestAppTestsnew.xctest"
+               BlueprintName = "UnitAndUITestAppTestsnew"
+               ReferencedContainer = "container:UnitAndUITestApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

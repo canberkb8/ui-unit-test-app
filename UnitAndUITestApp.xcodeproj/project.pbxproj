@@ -192,7 +192,6 @@
 				4DA25DEB2868D75F0073A6E6 /* Resources */,
 				4DA25E222868E9990073A6E6 /* SwiftLint */,
 				C3036F8212CA0477284BED28 /* [CP] Embed Pods Frameworks */,
-				4D8787F4286EFFE100A2525A /* Appcircle */,
 			);
 			buildRules = (
 			);
@@ -352,24 +351,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		4D8787F4286EFFE100A2525A /* Appcircle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Appcircle;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Instal dependencies\nrequire 'open3'\nrequire 'pathname'\n\n# Check & validate Enviroment Variables\ndef env_has_key(key)\n    return (ENV[key] != nil && ENV[key] !=\"\") ? ENV[key] : abort(\"Missing #{key}.\")\nend\n\n$project_path = ENV[\"AC_PROJECT\"] || abort('Missing project path.')\n$repository_path = ENV[\"AC_REPOSITORY_DIR\"]\n$project_full_path = $repository_path ? (Pathname.new $repository_path).join($project_path) : $project_path\n$scheme = env_has_key(\"AC_SCHEME\")\n$output_path = env_has_key(\"AC_OUTPUT_DIR\")\n$test_result_path = \"#{$output_path}/test.xcresult\"\n\n# Create a function to run test commands\ndef run_command(command, skip_abort)\n  puts \"@[command] #{command}\"\n  status = nil\n  stdout_str = nil\n  stderr_str = nil\n  Open3.popen3(command) do |stdin, stdout, stderr, wait_thr|\n    stdout.each_line do |line|\n      puts line\n    end\n    stdout_str = stdout.read\n    stderr_str = stderr.read\n    status = wait_thr.value\n  end\n  unless status.success?\n    puts stderr_str\n    unless skip_abort\n      exit 1\n    end\n  end\nend\n\n# Command to tell Xcode to run tests with parameters\ncommand_xcodebuild_test = \"xcodebuild -project #{$project_full_path} -scheme #{$scheme} -destination 'platform=iOS Simulator,name=iPhone 11,OS=latest' -resultBundlePath #{$test_result_path} test COMPILER_INDEX_STORE_ENABLE=NO\"\n\n# Run our function and perform the tests\nrun_command(command_xcodebuild_test,false)\n\nexit 0\n";
 		};
 		4DA25E222868E9990073A6E6 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
